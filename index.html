@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Felipe | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0f172a;
+color:white;
+line-height:1.6;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:#020617;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 60px;
+z-index:1000;
+transition:0.3s;
+}
+
+nav.scrolled{
+box-shadow:0 5px 20px rgba(0,0,0,0.6);
+}
+
+nav h2{
+color:#38bdf8;
+font-weight:700;
+letter-spacing:1px;
+text-shadow:0 0 10px #38bdf8;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+align-items:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
+padding:10px 18px;
+border-radius:8px;
+border:1px solid #1e293b;
+background:#020617;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#38bdf8;
+border:1px solid #38bdf8;
+background:#0f172a;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:120px 20px 60px;
+animation:fadeUp 1.2s ease;
+}
+
+.hero img{
+width:170px;
+height:170px;
+border-radius:50%;
+border:4px solid #38bdf8;
+object-fit:cover;
+margin-bottom:20px;
+animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+0%{box-shadow:0 0 5px #38bdf8;}
+50%{box-shadow:0 0 25px #38bdf8;}
+100%{box-shadow:0 0 5px #38bdf8;}
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:10px;
+color:#38bdf8;
+text-shadow:0 0 15px rgba(56,189,248,0.6);
+}
+
+.hero p{
+opacity:0.85;
+margin-bottom:30px;
+max-width:600px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+}
+
+.btn{
+padding:12px 25px;
+border:none;
+background:#38bdf8;
+color:black;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+text-decoration:none;
+transition:0.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+background:#0ea5e9;
+}
+
+/* SECTIONS */
+
+section{
+padding:100px 10%;
+}
+
+section h2{
+text-align:center;
+margin-bottom:50px;
+font-size:2rem;
+color:#38bdf8;
+position:relative;
+}
+
+section h2::after{
+content:"";
+display:block;
+width:60px;
+height:3px;
+background:#38bdf8;
+margin:10px auto 0;
+border-radius:2px;
+}
+
+/* BACKGROUNDS */
+
+#about{background:#020617;}
+#skills{background:#111827;}
+#projects{background:#020617;}
+#contact{background:#111827;}
+
+/* ABOUT */
+
+.about{
+max-width:900px;
+margin:auto;
+text-align:center;
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.about.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+/* SKILLS */
+
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+}
+
+.skill{
+background:#020617;
+padding:30px;
+border-radius:10px;
+text-align:center;
+transition:0.3s;
+}
+
+.skill:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.skill i{
+font-size:35px;
+color:#38bdf8;
+margin-bottom:15px;
+}
+
+.skill h3{
+font-size:18px;
+}
+
+/* PROJECTS */
+
+.projects-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.project{
+background:#020617;
+border-radius:10px;
+overflow:hidden;
+transition:0.4s;
+display:flex;
+flex-direction:column;
+opacity:0;
+transform:translateY(40px);
+}
+
+.project.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+.project:hover{
+transform:translateY(-6px);
+}
+
+.project-image{
+width:100%;
+height:380px;
+overflow:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#020617;
+}
+
+.project-image img{
+height:100%;
+width:auto;
+object-fit:contain;
+opacity:0.65;
+transition:transform 0.4s, opacity 0.4s;
+}
+
+.project:hover img{
+transform:scale(1.1);
+opacity:1;
+}
+
+.project:hover img{
+transform:scale(1.1);
+}
+
+.project-content{
+padding:20px;
+flex:1;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.project-content h3{
+color:#38bdf8;
+}
+
+.tech{
+font-size:12px;
+opacity:0.7;
+margin-top:5px;
+}
+
+.project-buttons{
+display:flex;
+gap:10px;
+margin-top:auto;
+flex-wrap:wrap;
+}
+
+/* CONTACT */
+
+.socials{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.social{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 22px;
+border-radius:6px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.instagram{background:#E4405F;color:white;}
+.instagram:hover{background:#c13584;transform:scale(1.05);}
+
+.whatsapp{background:#25D366;color:white;}
+.whatsapp:hover{background:#1ebe5d;transform:scale(1.05);}
+
+.email{background:#3b82f6;color:white;}
+.email:hover{background:#2563eb;transform:scale(1.05);}
+
+/* BACK TO TOP */
+
+#topBtn{
+position:fixed;
+bottom:30px;
+right:30px;
+background:#38bdf8;
+color:black;
+border:none;
+border-radius:50%;
+width:45px;
+height:45px;
+font-size:20px;
+cursor:pointer;
+display:none;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+background:#020617;
+margin-top:60px;
+font-size:14px;
+opacity:0.7;
+}
+/* ================= MOBILE / TABLET OPTIMIZATION ================= */
+
+@media (max-width: 1024px){
+
+nav{
+padding:15px 30px;
+}
+
+section{
+padding:80px 7%;
+}
+
+.hero h1{
+font-size:2.6rem;
+}
+
+}
+
+/* TABLETS */
+
+@media (max-width: 768px){
+
+nav{
+flex-direction:column;
+gap:12px;
+padding:15px 20px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+}
+
+nav a{
+padding:8px 14px;
+font-size:14px;
+}
+
+.hero{
+padding-top:140px;
+}
+
+.hero h1{
+font-size:2.2rem;
+}
+
+.hero p{
+font-size:15px;
+max-width:90%;
+}
+
+.buttons{
+flex-direction:column;
+align-items:center;
+gap:12px;
+}
+
+.btn{
+width:200px;
+text-align:center;
+}
+
+.skills-grid{
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.project-image{
+height:300px;
+}
+
+.projects-grid{
+grid-template-columns:1fr;
+}
+
+.socials{
+flex-direction:column;
+align-items:center;
+gap:12px;
+}
+
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 480px){
+
+nav h2{
+font-size:20px;
+}
+
+nav a{
+font-size:13px;
+padding:7px 12px;
+}
+
+.hero img{
+width:120px;
+height:120px;
+}
+
+.hero h1{
+font-size:1.9rem;
+}
+
+.hero p{
+font-size:14px;
+}
+
+section{
+padding:70px 6%;
+}
+
+section h2{
+font-size:1.6rem;
+}
+
+.skill{
+padding:22px;
+}
+
+.project-image{
+height:260px;
+}
+
+.project-content p{
+font-size:14px;
+}
+
+.project-buttons{
+flex-direction:column;
+}
+
+.btn{
+width:100%;
+}
+
+.social{
+width:220px;
+justify-content:center;
+}
+
+#topBtn{
+width:40px;
+height:40px;
+font-size:18px;
+}
+
+footer{
+font-size:13px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<h2>Felipe</h2>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero" id="home">
+
+<img src="profile.jpg" alt="Felipe Cano">
+
+<h1>Felipe Muñoz Cano</h1>
+
+<p>
+Web developer with skills in programming, photography,
+marketing and commercial consulting.
+</p>
+
+<div class="buttons">
+<a class="btn" href="#projects">View Projects</a>
+<a class="btn" href="#contact">Contact</a>
+</div>
+
+</section>
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<div class="about">
+
+<p>
+Systems engineering student passionate about technology,
+web development and digital projects. I enjoy creating
+interactive websites, developing new ideas and combining
+programming with marketing and visual content creation.
+</p>
+
+</div>
+
+</section>
+
+<section id="skills">
+
+<h2>Skills</h2>
+
+<div class="skills-grid">
+
+<div class="skill">
+<i class="fa-brands fa-html5"></i>
+<h3>HTML</h3>
+</div>
+
+<div class="skill">
+<i class="fa-brands fa-css3-alt"></i>
+<h3>CSS</h3>
+</div>
+
+<div class="skill">
+<i class="fa-brands fa-js"></i>
+<h3>JavaScript</h3>
+</div>
+
+<div class="skill">
+<i class="fa-solid fa-camera"></i>
+<h3>Photography</h3>
+</div>
+
+<div class="skill">
+<i class="fa-solid fa-image"></i>
+<h3>Photo Editing</h3>
+</div>
+
+<div class="skill">
+<i class="fa-solid fa-chart-line"></i>
+<h3>Marketing</h3>
+</div>
+
+<div class="skill">
+<i class="fa-solid fa-bullhorn"></i>
+<h3>Advertising</h3>
+</div>
+
+<div class="skill">
+<i class="fa-solid fa-handshake"></i>
+<h3>Sales Consulting</h3>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<h2>Projects</h2>
+
+<div class="projects-grid">
+
+<div class="project">
+
+<div class="project-image">
+<img src="projects.JPEG">
+</div>
+
+<div class="project-content">
+
+<h3>Portfolio Website</h3>
+
+<p>
+Personal portfolio website created using HTML, CSS and JavaScript.
+</p>
+
+<p class="tech">HTML • CSS • JavaScript</p>
+
+<div class="project-buttons">
+<a class="btn">You are already here</a>
+</div>
+
+</div>
+</div>
+
+<div class="project">
+
+<div class="project-image">
+<img src="https://media.tenor.com/gjTjxUCoP3sAAAAj/jumping-gatito.gif">
+</div>
+
+<div class="project-content">
+
+<h3>Interactive Invitation</h3>
+
+<p>
+Interactive website created to invite someone out.
+Every time the user presses "No", a new animated cat appears.
+</p>
+
+<p class="tech">HTML • CSS • JavaScript</p>
+
+<div class="project-buttons">
+
+<a class="btn" href="https://feli-cano.github.io/feli__cano/" target="_blank">
+View Project
+</a>
+
+<a class="btn" href="https://github.com/feli-cano/feli__cano" target="_blank">
+<i class="fa-brands fa-github"></i> Code
+</a>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<div class="socials">
+
+<a class="social instagram" href="https://instagram.com/feli__cano" target="_blank">
+<i class="fa-brands fa-instagram"></i> Instagram
+</a>
+
+<a class="social whatsapp" href="https://wa.me/573044243565" target="_blank">
+<i class="fa-brands fa-whatsapp"></i> WhatsApp
+</a>
+
+<a class="social email" href="mailto:pipelonsote2009@gmail.com">
+<i class="fa-solid fa-envelope"></i> Email
+</a>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Felipe Cano | Personal Portfolio
+</footer>
+
+<button id="topBtn">↑</button>
+
+<script>
+
+/* NAV SHADOW */
+
+window.addEventListener("scroll",()=>{
+const nav=document.querySelector("nav")
+if(window.scrollY>50){
+nav.classList.add("scrolled")
+}else{
+nav.classList.remove("scrolled")
+}
+})
+
+/* SCROLL ANIMATION */
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("visible")
+}
+})
+})
+
+document.querySelectorAll(".about").forEach(el=>observer.observe(el))
+document.querySelectorAll(".project").forEach(el=>observer.observe(el))
+
+/* BACK TO TOP */
+
+const topBtn=document.getElementById("topBtn")
+
+window.onscroll=function(){
+if(document.body.scrollTop>300 || document.documentElement.scrollTop>300){
+topBtn.style.display="block"
+}else{
+topBtn.style.display="none"
+}
+}
+
+topBtn.onclick=function(){
+window.scrollTo({top:0,behavior:"smooth"})
+}
+
+</script>
+
+</body>
+</html>
